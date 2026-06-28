@@ -64,7 +64,7 @@ def load_chunks() -> list[dict[str, Any]]:
     CHUNK_SIZE = 5000  # 字符
     CHUNK_OVERLAP = 200
 
-    for md_path in sorted(TRANSCRIPT_DIR.glob("*.auc.md")):
+    for md_path in sorted(list(TRANSCRIPT_DIR.glob("*.auc.md")) + list(TRANSCRIPT_DIR.glob("*.merged.md"))):
         lesson_name = md_path.stem.split("_X")[0] if "_X" in md_path.stem else md_path.stem
         lesson_name = lesson_name.replace("-", " ")
         raw = md_path.read_text(encoding="utf-8")
