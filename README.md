@@ -19,14 +19,17 @@
 
 ## 数据组成
 
-| 来源 | 数量 | 文件 |
-|---|---|---|
-| 手写精简知识库(按章节切分) | 11 chunks | `BRAIN_考试知识库.md` |
-| 课程转写(0-用户到顾问衔接课、零基础学量化、读论文、Super Alpha 等) | 76 chunks | `transcripts/*.auc.md` / `*.merged.md` |
-| BRAIN 官方 FAQ(authenticated `/faqs`) | 173 chunks | `brain_official_cache.json` |
-| BRAIN 官方 Operator(`/operators`) | 66 chunks | 同上 |
-| BRAIN 官方 Tutorial(`/tutorial-pages/{id}`) | 24 chunks | 同上 |
-| **合计** | **350** | |
+| 来源 | 数量 | 文件 | 出处 |
+|---|---|---|---|
+| 手写精简知识库(按章节切分) | 11 chunks | `BRAIN_考试知识库.md` | 自有整理(平台学习笔记 + 真题复盘) |
+| 课程转写 | 76 chunks | `transcripts/*.auc.md` / `*.merged.md` | 平台官方课程录播:零基础学量化 4 讲、带你读论文 3 讲、Super Alpha 入门、Consultant Training 2 讲、用户到顾问衔接课、Brain Lab 数据探索等;音频经火山方舟 AUC 转写 |
+| BRAIN 官方 FAQ | 173 chunks | `brain_official_cache.json` | `GET https://api.worldquantbrain.com/faqs`(需登录 cookie) |
+| BRAIN 官方 Operator | 66 chunks | 同上 | `GET https://api.worldquantbrain.com/operators` |
+| BRAIN 官方 Tutorial | 24 chunks | 同上 | `GET https://api.worldquantbrain.com/tutorial-pages/{id}`(先 `/tutorials` 拿索引) |
+| **合计** | **350** | | |
+
+> 拉取脚本:`fetch_brain_official.py`,凭据走 `brain_credentials.txt`(`BRAIN_CRED` 可覆盖路径)。
+> 私有/受限内容仅做本地知识沉淀,不在仓库内分发原文。
 
 向量:doubao-embedding-vision-251215,2048 维,余弦相似度暴搜(无 FAISS)。
 
