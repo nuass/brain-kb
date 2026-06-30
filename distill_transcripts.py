@@ -196,6 +196,13 @@ def distill_one(md_path: Path) -> Path | None:
         print(f"  seg {i}/{len(segs)} done ({len(out)} chars)")
 
     merged = merge_distilled(parts)
+    try:
+        from fix_terms import apply as fix_terms_apply
+        merged, n_sub = fix_terms_apply(merged)
+        if n_sub:
+            print(f"  [fix_terms] {n_sub} substitutions")
+    except ImportError:
+        pass
     header = f"# {title}\n\n> 来源: transcripts/{md_path.name}\n\n"
     out_path.write_text(header + merged, encoding="utf-8")
     print(f"[ok  ] -> {out_path.name}")
