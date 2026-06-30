@@ -56,26 +56,58 @@ def load_chunks() -> list[dict[str, Any]]:
     """Parse KB markdown + transcript files into chunks."""
     chunks: list[dict[str, Any]] = []
 
-    # 1. 精简版知识库（按 ## 切分）
+    # 1. 精简版知识库
+    #    默认按 ## 切；含 "### Q:" 的章节进一步切成独立 QA chunk
+    def flush_section(title: str, lines: list[str]) -> None:
+        if not (title or lines):
+            return
+        body = "\n".join(lines).strip()
+        if not body:
+            return
+        if "### Q:" in body:
+            cur_q, cur_a = None, []
+            head_lines: list[str] = []
+            seen_q = False
+            for ln in body.splitlines():
+                s = ln.rstrip()
+                if s.startswith("### Q:"):
+                    if cur_q is not None:
+                        chunks.append({
+                            "title": f"{title} - {cur_q}",
+                            "content": f"Q: {cur_q}\nA: {'\n'.join(cur_a).strip()}",
+                        })
+                    cur_q = s[len("### Q:"):].strip()
+                    cur_a = []
+                    seen_q = True
+                elif cur_q is not None:
+                    if s.startswith("A:"):
+                        cur_a.append(s[len("A:"):].strip())
+                    elif s:
+                        cur_a.append(s)
+                elif not seen_q:
+                    head_lines.append(s)
+            if cur_q is not None:
+                chunks.append({
+                    "title": f"{title} - {cur_q}",
+                    "content": f"Q: {cur_q}\nA: {'\n'.join(cur_a).strip()}",
+                })
+            head_body = "\n".join(head_lines).strip()
+            if head_body:
+                chunks.append({"title": title, "content": head_body})
+        else:
+            chunks.append({"title": title, "content": body})
+
     text = KB_PATH.read_text(encoding="utf-8")
     current_title = ""
     current_lines: list[str] = []
     for line in text.splitlines():
         if line.startswith("## "):
-            if current_lines:
-                chunks.append({
-                    "title": current_title,
-                    "content": "\n".join(current_lines).strip(),
-                })
+            flush_section(current_title, current_lines)
             current_title = line[3:].strip()
             current_lines = []
         else:
             current_lines.append(line)
-    if current_lines:
-        chunks.append({
-            "title": current_title,
-            "content": "\n".join(current_lines).strip(),
-        })
+    flush_section(current_title, current_lines)
 
     # 2. 课程蒸馏笔记（transcripts_distilled/*.distilled.md）
     #    每个文件切成 1 个「要点合集」chunk + N 个 QA chunk（每个 Q+A 独立检索）

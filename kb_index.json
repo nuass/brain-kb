@@ -37,7 +37,67 @@
   },
   {
     "title": "九、关键数字与阈值速查表",
-    "content": "| 项目 | 数字 |\n|---|---|\n| BRAIN 成立年份 | 2007 年 |\n| 全球办公室 | 13 个国家/地区，24 个办公室 |\n| 员工人数 | 1,000 人 |\n| 平台用户 | 100,000+ |\n| 顾问人数 | 3,500+ |\n| 数据字段总数 | **140,000+** |\n| 用户回测历史长度 | **5 年** |\n| 顾问回测历史长度 | **10 年** |\n| 成为顾问门槛 | **10,000 分** |\n| 每日积分上限 | **2,000 分** |\n| 每 Alpha 积分 | 1,500-2,000 分 |\n| 用户并发回测 | **3 个** |\n| 顾问并发回测 | **10 个** |\n| 季度奖金最低/最高 | $100 / **$25,000** |\n| Genius 保底档位 | $8,500 / $2,000 / $200 |\n| 新人挑战 7/14/20 天奖励 | ¥500 / ¥1,000 / ¥1,700 |\n| 推荐成功奖励 | $200/人 |\n| 季度奖金参评最低提交天数 | **20 个自然日** |\n| 顾问日提交上限 | 1-4 个 Alpha |\n| Sharpe 常见通过线 | >1.25 或 >1.62（视设置而定） |\n| Fitness 通过线 | >1 |\n| 标准一年交易日 | 252 天 |\n| 一个季度交易日 | 66 天（约） |\n| FND6 字段数示例 | 约 574 个可生成 Alpha |"
+    "content": "| 项目 | 数字 |\n|---|---|\n| BRAIN 成立年份 | 2007 年 |\n| 全球办公室 | 13 个国家/地区，24 个办公室 |\n| 员工人数 | 1,000 人 |\n| 平台用户 | 100,000+ |\n| 顾问人数 | 3,500+ |\n| 数据字段总数 | **140,000+** |\n| 用户回测历史长度 | **5 年** |\n| 顾问回测历史长度 | **10 年** |\n| 成为顾问门槛 | **10,000 分** |\n| 每日积分上限 | **2,000 分** |\n| 每 Alpha 积分 | 1,500-2,000 分 |\n| 用户并发回测 | **3 个** |\n| 顾问并发回测 | **10 个** |\n| 季度奖金最低/最高 | $100 / **$25,000** |\n| Genius 保底档位 | $8,500 / $2,000 / $200 |\n| 新人挑战 7/14/20 天奖励 | ¥500 / ¥1,000 / ¥1,700 |\n| 推荐成功奖励 | $200/人 |\n| 季度奖金参评最低提交天数 | **20 个自然日** |\n| 顾问日提交上限 | 1-4 个 Alpha |\n| Sharpe 常见通过线 | >1.25 或 >1.62（视设置而定） |\n| Fitness 通过线 | >1 |\n| 标准一年交易日 | 252 天 |\n| 一个季度交易日 | 66 天（约） |\n| FND6 字段数示例 | 约 574 个可生成 Alpha |\n\n---"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - Consultant 考试通过的 Sharpe 比率最低要求是多少？",
+    "content": "Q: Consultant 考试通过的 Sharpe 比率最低要求是多少？\nA: **1.25**。部分 region/universe（如 USA TOP3000）需要 1.62。这是 Consultant 申请审核的硬阈值。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - Consultant 的 Fitness 通过线是多少？",
+    "content": "Q: Consultant 的 Fitness 通过线是多少？\nA: **>1**。Fitness 由 Sharpe、Returns、Turnover 三个维度综合计算。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - Fitness 指标主要由哪三个维度综合计算？",
+    "content": "Q: Fitness 指标主要由哪三个维度综合计算？\nA: **Sharpe、Returns、Turnover** 三个维度综合得出。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - Consultant 同时可以跑几个 Simulation？",
+    "content": "Q: Consultant 同时可以跑几个 Simulation？\nA: **10 个**。用户阶段是 3 个，成为 Consultant 后上限提升到 10。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 顾问每天最多可提交几个 Alpha？",
+    "content": "Q: 顾问每天最多可提交几个 Alpha？\nA: **1-4 个**（按等级不同），日 base pay 上限 **120 美元**，由 RIQ Alpha + Super Alpha 两部分组成。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 拿到 Super Alpha 权限的条件是什么？",
+    "content": "Q: 拿到 Super Alpha 权限的条件是什么？\nA: 已提交 **100 个** Alpha 后开通 Super Alpha 权限；卡槽 3 个，可在 ACE templates 下载 API。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - Super Alpha 提交对 turnover 的要求？",
+    "content": "Q: Super Alpha 提交对 turnover 的要求？\nA: **turnover < 40%**，且必须填 description，否则无法提交。Super Alpha 选择数量限制 10-500 个。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - BRAIN 积分体系中触发顾问邀请的积分门槛是多少？",
+    "content": "Q: BRAIN 积分体系中触发顾问邀请的积分门槛是多少？\nA: **10000 分**（Bronze/Silver/Gold 体系下的 Gold 门槛）。达到后会收到顾问邀请邮件。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - POST /submit 返回 201/200 后，如何验证 Alpha 已成功上线？",
+    "content": "Q: POST /submit 返回 201/200 后，如何验证 Alpha 已成功上线？\nA: 检查 `/alphas/{id}` 的 `status` 字段是否为 **ACTIVE**。**不要**轮询 Location header（提交不是异步任务）。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - /check 端点返回 SELF_CORRELATION 时最可靠的做法？",
+    "content": "Q: /check 端点返回 SELF_CORRELATION 时最可靠的做法？\nA: 信 `/check` 端点的结论。**不要**查 `/alphas/{id}`——SELF_CORRELATION 状态在 `/alphas/{id}` 永远显示 PENDING（已知缓存 bug）。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 优秀顾问的 self correlation 应控制在什么范围？",
+    "content": "Q: 优秀顾问的 self correlation 应控制在什么范围？\nA: **< 0.6**。high value factor 的同学，每天提交 ~4 个 Alpha 时收入增加最多。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 季度奖金的参评最低提交天数？",
+    "content": "Q: 季度奖金的参评最低提交天数？\nA: **20 个自然日**（同一季度内）。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 标准一年和一个季度的交易日数？",
+    "content": "Q: 标准一年和一个季度的交易日数？\nA: 一年 **252** 天，一个季度约 **66** 天。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查 - 选择 Alpha 时 operator 总数上限？",
+    "content": "Q: 选择 Alpha 时 operator 总数上限？\nA: 500 个 Alpha 的 operator 总和 **不能超过 8000 个**。"
+  },
+  {
+    "title": "十、考试关键阈值 QA 速查",
+    "content": "短问题命中专用：把高频考点的数字/规则拆成独立可检索的 QA。"
   },
   {
     "title": "01 零基础学量化第一课 - 要点",

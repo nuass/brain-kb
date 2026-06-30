@@ -261,3 +261,51 @@
 | 标准一年交易日 | 252 天 |
 | 一个季度交易日 | 66 天（约） |
 | FND6 字段数示例 | 约 574 个可生成 Alpha |
+
+---
+
+## 十、考试关键阈值 QA 速查
+
+短问题命中专用：把高频考点的数字/规则拆成独立可检索的 QA。
+
+### Q: Consultant 考试通过的 Sharpe 比率最低要求是多少？
+A: **1.25**。部分 region/universe（如 USA TOP3000）需要 1.62。这是 Consultant 申请审核的硬阈值。
+
+### Q: Consultant 的 Fitness 通过线是多少？
+A: **>1**。Fitness 由 Sharpe、Returns、Turnover 三个维度综合计算。
+
+### Q: Fitness 指标主要由哪三个维度综合计算？
+A: **Sharpe、Returns、Turnover** 三个维度综合得出。
+
+### Q: Consultant 同时可以跑几个 Simulation？
+A: **10 个**。用户阶段是 3 个，成为 Consultant 后上限提升到 10。
+
+### Q: 顾问每天最多可提交几个 Alpha？
+A: **1-4 个**（按等级不同），日 base pay 上限 **120 美元**，由 RIQ Alpha + Super Alpha 两部分组成。
+
+### Q: 拿到 Super Alpha 权限的条件是什么？
+A: 已提交 **100 个** Alpha 后开通 Super Alpha 权限；卡槽 3 个，可在 ACE templates 下载 API。
+
+### Q: Super Alpha 提交对 turnover 的要求？
+A: **turnover < 40%**，且必须填 description，否则无法提交。Super Alpha 选择数量限制 10-500 个。
+
+### Q: BRAIN 积分体系中触发顾问邀请的积分门槛是多少？
+A: **10000 分**（Bronze/Silver/Gold 体系下的 Gold 门槛）。达到后会收到顾问邀请邮件。
+
+### Q: POST /submit 返回 201/200 后，如何验证 Alpha 已成功上线？
+A: 检查 `/alphas/{id}` 的 `status` 字段是否为 **ACTIVE**。**不要**轮询 Location header（提交不是异步任务）。
+
+### Q: /check 端点返回 SELF_CORRELATION 时最可靠的做法？
+A: 信 `/check` 端点的结论。**不要**查 `/alphas/{id}`——SELF_CORRELATION 状态在 `/alphas/{id}` 永远显示 PENDING（已知缓存 bug）。
+
+### Q: 优秀顾问的 self correlation 应控制在什么范围？
+A: **< 0.6**。high value factor 的同学，每天提交 ~4 个 Alpha 时收入增加最多。
+
+### Q: 季度奖金的参评最低提交天数？
+A: **20 个自然日**（同一季度内）。
+
+### Q: 标准一年和一个季度的交易日数？
+A: 一年 **252** 天，一个季度约 **66** 天。
+
+### Q: 选择 Alpha 时 operator 总数上限？
+A: 500 个 Alpha 的 operator 总和 **不能超过 8000 个**。
