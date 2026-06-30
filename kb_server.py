@@ -847,7 +847,7 @@ def index():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRAIN 考试知识库</title>
+<title>量化知识库</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f7fa;color:#333;line-height:1.6;padding:20px}
@@ -919,8 +919,9 @@ h1.md-h{font-size:18px}h2.md-h{font-size:16px}h3.md-h{font-size:15px}h4.md-h,h5.
 </head>
 <body>
 <div class="container">
-  <h1>BRAIN Consultant 考试知识库</h1>
-  <p class="subtitle">输入考试题目检索答案，或直接浏览完整知识库</p>
+  <h1>量化知识库</h1>
+  <p class="subtitle">输入问题检索答案，或直接浏览完整知识库</p>
+  <p class="subtitle" style="font-size:12px;color:#888">非官方项目，与 WorldQuant 无关，仅供学习参考</p>
   <div class="tabs">
     <button class="tab active" id="tab-search" onclick="switchTab('search')">搜索答案</button>
     <button class="tab" id="tab-kb" onclick="switchTab('kb')">浏览知识库</button>
